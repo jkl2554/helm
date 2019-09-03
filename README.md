@@ -261,6 +261,7 @@ kubectl get po -n redis-test --show-labels
 NAME                               READY   STATUS    RESTARTS   AGE     LABELS
 redis-failover-redis-ha-server-0   0/2     Running   0          35s     app=redis-ha,controller-revision-hash=redis-failover-redis-ha-server-6dfcd4b66f,release=redis-failover,role=slave,statefulset.kubernetes.io/pod-name=redis-failover-redis-ha-server-0
 redis-failover-redis-ha-server-1   2/2     Running   0          9m46s   app=redis-ha,controller-revision-hash=redis-failover-redis-ha-server-6dfcd4b66f,release=redis-failover,role=slave,statefulset.kubernetes.io/pod-name=redis-failover-redis-ha-server-1
+### Master로 선정된 pod
 redis-failover-redis-ha-server-2   2/2     Running   0          7m56s   app=redis-ha,controller-revision-hash=redis-failover-redis-ha-server-6dfcd4b66f,release=redis-failover,role=master,statefulset.kubernetes.io/pod-name=redis-failover-redis-ha-server-2
 ```
 * master read & write test
