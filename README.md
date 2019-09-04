@@ -6,7 +6,7 @@
 ![구성도](./images/구성도.png)  
 2. FailOver시 작동  
 ![Failover](./images/failover.png)  
-##StatefulSet 설정 작업
+## StatefulSet 설정 작업
 ### StatefulSet
 데이터 및 상태가 유지되어야 하는 애플리케이션을 실행하기위한 컨트롤러 
 ##### 주요 기능 
