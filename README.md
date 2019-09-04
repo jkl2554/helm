@@ -1,5 +1,18 @@
 # Failover
-1. StatefulSet 
+## 목적 
+- Redis sentinel을 이용해서 자동으로 Failover가 되게 구성해 동일한 Public Ip로 Master 및 Slave에 접속
+## 구성 및 구성도
+1. 초기 생성 시   
+![구성도](./images/구성도.png)
+2. FailOver시 작동  
+![Failover](./images/failover.png)
+##StatefulSet 설정 작업
+### StatefulSet
+데이터 및 상태가 유지되어야 하는 애플리케이션을 실행하기위한 컨트롤러 
+##### 주요 기능 
+ - Pod 이름에 규칙성 부여: pod이름에 특정한 규칙성을 부여(redis-ha-0, redis-ha-1, ..)
+ - 순차적 기동 : Pod이름 순서대로 실행해 Master 및 Slave 설정이 용이
+ - 개별 Pod 디스크 볼륨관리: PVC 템플릿 형태로 pod마다 각각의 PV, PVC를 생성 및 관리 가능
 ```yaml
 # (spec.template.spec)
       initContainers:
@@ -99,7 +112,12 @@
 {{- end }}
 ```
 * Persistant Volume 설정
-2. ConfigMap 수정을 통해 Failover작업 실행
+## ConfigMap 수정을 통해 Failover작업 실행
+###ConfigMap
+각종 환경설정 및 변수와 초기화 파일을 Pod가 생성될때 미리 설정할 수 있는 저장소
+##### 주요 기능 
+ - 환경변수 값을 전달 : ConfigMap에서 설정한 환경변수 값을 Pod에 전달
+ - 디스크로 Mount : ConfigMap에 설정한 파일을 디스크 형태로 Pod에 Mount해 각종 설정파일 및 스크립트 파일 전달
 
 ```yaml
   sentinel.conf: |
