@@ -3,9 +3,9 @@
 - Redis sentinel을 이용해서 자동으로 Failover가 되게 구성해 동일한 Public Ip로 Master 및 Slave에 접속
 ## 구성 및 구성도
 1. 초기 생성 시   
-![구성도](./images/구성도.png)
+![구성도](./images/구성도.png)  
 2. FailOver시 작동  
-![Failover](./images/failover.png)
+![Failover](./images/failover.png)  
 ##StatefulSet 설정 작업
 ### StatefulSet
 데이터 및 상태가 유지되어야 하는 애플리케이션을 실행하기위한 컨트롤러 
