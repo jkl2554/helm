@@ -1,7 +1,9 @@
 # Failover
-## 목적 
+## 목적 및 구성
 - Redis sentinel을 이용해서 자동으로 Failover가 되게 구성해 동일한 Public Ip로 Master 및 Slave에 접속
-## 구성 및 구성도
+- Sentinel에서 마스터가 선정되면 자동으로 kubectl명령을 통해 선정된 마스터 pod label에 role=master를 설정하고 나머지 pod label에 role=slave로 설정
+- master service는 selector에 role=master, slave service는 selector에 role=slave를 설정해 master및 slave접속 구분
+## 구성도
 1. 초기 생성 시   
 ![구성도](./images/구성도.png)  
 2. FailOver시 작동  
